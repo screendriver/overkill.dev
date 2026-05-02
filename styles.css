@@ -215,6 +215,14 @@ main {
 	gap: 1rem;
 }
 
+.cards li {
+	display: flex;
+}
+
+.card {
+	width: 100%;
+}
+
 .card h3 {
 	margin-top: 0;
 	font-size: clamp(0.72rem, 1.2vw, 0.82rem);
@@ -237,6 +245,12 @@ main {
 
 .footer a {
 	color: var(--accent-cyan);
+}
+
+@media (max-width: 56rem) {
+	.cards {
+		grid-template-columns: 1fr;
+	}
 }
 
 @media (max-width: 48rem) {
