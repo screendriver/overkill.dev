@@ -1,0 +1,28 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"dependencyDashboard": true,
+	"labels": ["renovate"],
+	"lockFileMaintenance": {
+		"enabled": true,
+		"automerge": true
+	},
+	"packageRules": [
+		{
+			"groupName": "Fontsource dependencies",
+			"groupSlug": "fontsource-dependencies",
+			"matchPackageNames": ["@fontsource/*"]
+		},
+		{
+			"matchFileNames": [".woodpecker/*.yaml"],
+			"matchUpdateTypes": ["minor", "patch"],
+			"automerge": true,
+			"automergeType": "branch"
+		},
+		{
+			"matchDepTypes": ["dependencies", "devDependencies"],
+			"matchUpdateTypes": ["minor", "patch"],
+			"automerge": true,
+			"automergeType": "branch"
+		}
+	]
+}
