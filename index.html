@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			content="A retro pixel landing page about why testing is not overkill, with links to deeper engineering notes."
+		/>
+		<title>Testing and TDD Are Not Overkill</title>
+		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+		<link rel="stylesheet" href="/styles.css" />
+		<script src="https://pulse.82r.de/api/script.js" data-site-id="2a8802ac27e9" defer></script>
+	</head>
+	<body>
+		<div class="scanlines" aria-hidden="true"></div>
+		<header class="hero frame">
+			<p class="kicker">SYSTEM BOOT: ENGINEERING OPINIONS.EXE</p>
+			<h1>Testing is overkill.</h1>
+			<p class="lede">Why test anything? Ship first. Think never. Hope forever.</p>
+			<a class="button" href="https://www.echooff.dev/blog" rel="noopener noreferrer">Witness the evidence</a>
+		</header>
+
+		<main>
+			<section class="reveal frame" aria-labelledby="plot-twist">
+				<h2 id="plot-twist">Plot Twist</h2>
+				<p>
+					That opening line is satire. “Testing is overkill” is the fastest way to build brittle systems,
+					panic-driven releases, and bug archeology as a full-time job.
+				</p>
+				<p>
+					The real overkill is debugging production at 3:17 AM because we skipped ten minutes of design and
+					ten lines of tests.
+				</p>
+			</section>
+
+			<section aria-labelledby="myths-versus-reality-heading">
+				<h2 id="myths-versus-reality-heading" class="visually-hidden">Myths versus reality</h2>
+				<ul class="cards">
+					<li>
+						<article class="card frame">
+							<h3>Myth: Tests slow delivery</h3>
+							<p>Reality: rework slows delivery. Good tests are speed insurance with receipts.</p>
+						</article>
+					</li>
+					<li>
+						<article class="card frame">
+							<h3>Myth: TDD is ceremony</h3>
+							<p>Reality: tiny feedback loops are cheaper than giant post-release surprises.</p>
+						</article>
+					</li>
+					<li>
+						<article class="card frame">
+							<h3>Myth: Quality is for perfectionists</h3>
+							<p>Reality: quality is for teams that like sleeping during the night.</p>
+						</article>
+					</li>
+				</ul>
+			</section>
+		</main>
+
+		<footer class="footer frame">
+			<p>
+				Read the long-form takes on testing, architecture, and tradeoffs on
+				<a href="https://www.echooff.dev/blog" rel="noopener noreferrer">echooff.dev/blog</a>.
+			</p>
+		</footer>
+	</body>
+</html>
