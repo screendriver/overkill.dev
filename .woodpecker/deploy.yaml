@@ -1,0 +1,32 @@
+---
+when:
+    - event: push
+      branch: main
+    - event: manual
+
+steps:
+    - name: build
+      image: node:24.15.0
+      commands:
+          - npm clean-install
+          - npx just build
+
+    - name: publish-container-image
+      image: woodpeckerci/plugin-docker-buildx:6.1.0
+      settings:
+          repo:
+              from_secret: repository
+          registry:
+              from_secret: registry
+          dockerfile: Dockerfile
+          platforms: linux/arm64
+          tags:
+              - latest
+              - ${CI_COMMIT_SHA}
+          username:
+              from_secret: username
+          password:
+              from_secret: access_token
+
+depends_on:
+    - test
