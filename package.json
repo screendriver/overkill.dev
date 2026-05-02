@@ -9,9 +9,6 @@
 	"engines": {
 		"node": "24.15.0"
 	},
-	"scripts": {
-		"start": "vite --host 127.0.0.1 --port 4321"
-	},
 	"devDependencies": {
 		"@fontsource/ibm-plex-sans": "5.2.8",
 		"@fontsource/press-start-2p": "5.2.7",
