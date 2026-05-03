@@ -19,5 +19,12 @@ const trackingScriptInjectionPlugin = {
 };
 
 export default defineConfig({
-	plugins: [trackingScriptInjectionPlugin]
+	plugins: [trackingScriptInjectionPlugin],
+	build: {
+		outDir: "target"
+	},
+	server: {
+		host: "127.0.0.1",
+		port: 4321
+	}
 });

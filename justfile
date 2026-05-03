@@ -4,7 +4,7 @@ default:
 	@just --list
 
 build:
-	vite build --outDir target
+	vite build
 
 format:
 	prettier --log-level warn --write .
@@ -14,7 +14,7 @@ validate:
 	just build
 
 start:
-	vite --host 127.0.0.1 --port 4321
+	vite
 
 docker-build:
 	just build
