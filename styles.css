@@ -124,7 +124,7 @@ body::before {
 }
 
 .hero::before {
-	content: "1987 MODE";
+	content: "1982 MODE";
 	position: absolute;
 	top: 0.7rem;
 	right: 0.9rem;
