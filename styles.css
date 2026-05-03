@@ -184,6 +184,58 @@ body::before {
 		center bottom;
 }
 
+.terminal-icon {
+	position: absolute;
+	top: 0.62rem;
+	left: 0.78rem;
+	width: clamp(2rem, 4.2vw, 2.8rem);
+	height: auto;
+	stroke: var(--accent-cyan);
+	stroke-width: 1.2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	filter: drop-shadow(0 0 6px rgb(78 243 255 / 0.4));
+}
+
+.terminal-icon .monitor-shell {
+	fill: rgb(9 12 33 / 0.96);
+}
+
+.terminal-icon .monitor-top-edge {
+	fill: rgb(56 76 148 / 0.62);
+}
+
+.terminal-icon .monitor-right-edge {
+	fill: rgb(21 31 83 / 0.86);
+}
+
+.terminal-icon .monitor-front-face {
+	fill: url(#monitorFrontFaceGradient);
+}
+
+.terminal-icon .monitor-screen-glass {
+	fill: url(#screenGlowGradient);
+}
+
+.terminal-icon .monitor-screen-highlight {
+	fill: rgb(215 255 255 / 0.22);
+	stroke: none;
+}
+
+.terminal-icon .monitor-neck,
+.terminal-icon .keyboard-chassis {
+	fill: rgb(34 44 98 / 0.9);
+}
+
+.terminal-icon .keyboard-plate {
+	fill: rgb(20 27 69 / 0.95);
+}
+
+.terminal-icon .keyboard-key {
+	fill: rgb(132 230 255 / 0.82);
+	stroke: none;
+}
+
 .hero::before {
 	content: "1982 MODE";
 	position: absolute;
