@@ -106,26 +106,20 @@ body::before {
 	transform-origin: center top;
 }
 
-.frame::before {
-	content: "";
-	position: absolute;
-	inset: 0;
-	pointer-events: none;
-	background: radial-gradient(ellipse at center, transparent 58%, rgb(2 3 12 / 0.12) 78%, rgb(2 3 12 / 0.24) 100%);
-}
-
 .frame::after {
 	content: "";
 	position: absolute;
 	inset: 0;
 	pointer-events: none;
-	background: repeating-linear-gradient(
-		45deg,
-		transparent 0,
-		transparent 7px,
-		rgb(124 224 255 / 0.05) 7px,
-		rgb(124 224 255 / 0.05) 8px
-	);
+	background:
+		radial-gradient(ellipse at center, transparent 58%, rgb(2 3 12 / 0.12) 78%, rgb(2 3 12 / 0.24) 100%),
+		repeating-linear-gradient(
+			45deg,
+			transparent 0,
+			transparent 7px,
+			rgb(124 224 255 / 0.05) 7px,
+			rgb(124 224 255 / 0.05) 8px
+		);
 }
 
 .hero {
@@ -228,6 +222,8 @@ h1 {
 	font-size: clamp(1.4rem, 4vw, 2.6rem);
 	color: var(--accent-hot);
 	text-shadow:
+		1px 0 0 rgb(78 243 255 / 0.55),
+		-1px 0 0 rgb(255 94 196 / 0.5),
 		3px 3px 0 #1e174a,
 		0 0 16px rgb(255 94 196 / 0.35);
 }
