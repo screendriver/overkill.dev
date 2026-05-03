@@ -303,6 +303,17 @@ h1 {
 	background: linear-gradient(180deg, #98fdff 0%, #52d9ff 100%);
 	border: 3px solid #b2fcff;
 	box-shadow: 4px 4px 0 #142649;
+	transition:
+		filter 140ms ease,
+		box-shadow 140ms ease;
+}
+
+.button:hover,
+.button:focus-visible {
+	filter: brightness(1.08);
+	box-shadow:
+		4px 4px 0 #142649,
+		0 0 14px rgb(78 243 255 / 0.35);
 }
 
 .button:focus-visible,
