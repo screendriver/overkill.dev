@@ -15,7 +15,3 @@ validate:
 
 start:
 	vite
-
-docker-build:
-	just build
-	docker build -t overkill.dev:local .
