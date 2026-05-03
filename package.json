@@ -9,6 +9,9 @@
 	"engines": {
 		"node": "24.15.0"
 	},
+	"dependencies": {
+		"modern-normalize": "3.0.1"
+	},
 	"devDependencies": {
 		"@fontsource/ibm-plex-sans": "5.2.8",
 		"@fontsource/press-start-2p": "5.2.7",

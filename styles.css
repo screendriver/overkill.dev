@@ -1,3 +1,4 @@
+@import "modern-normalize/modern-normalize.css";
 @import "@fontsource/press-start-2p";
 @import "@fontsource/ibm-plex-sans/400.css";
 @import "@fontsource/ibm-plex-sans/600.css";
@@ -18,18 +19,29 @@
 	--font-body: "IBM Plex Sans", "Segoe UI", Tahoma, sans-serif;
 }
 
-* {
+*,
+*::before,
+*::after {
 	box-sizing: border-box;
 }
 
 html,
 body {
-	margin: 0;
-	padding: 0;
+	min-height: 100%;
+}
+
+html {
+	height: 100%;
+	height: -webkit-fill-available;
+	overflow-x: clip;
+	overscroll-behavior-y: none;
 }
 
 body {
-	min-height: 100vh;
+	margin: 0;
+	padding: 0;
+	min-height: 100dvh;
+	min-height: -webkit-fill-available;
 	padding: clamp(1rem, 2vw, 2.5rem);
 	font-family: var(--font-body);
 	color: var(--text-primary);
@@ -38,6 +50,9 @@ body {
 		radial-gradient(circle at 10% 90%, #123d6f 0%, transparent 35%),
 		linear-gradient(180deg, #040410 0%, #0b0f2d 100%);
 	line-height: 1.6;
+	overflow-x: clip;
+	overscroll-behavior-y: none;
+	-webkit-overflow-scrolling: touch;
 }
 
 body::before {
