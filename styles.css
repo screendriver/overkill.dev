@@ -435,6 +435,14 @@ main {
 	color: var(--accent-cyan);
 }
 
+.footer-note {
+	margin-top: 0.65rem;
+	font-family: var(--font-pixel);
+	font-size: clamp(0.5rem, 1vw, 0.6rem);
+	letter-spacing: 0.04em;
+	color: var(--accent-green);
+}
+
 @media (max-width: 56rem) {
 	.cards {
 		grid-template-columns: 1fr;
