@@ -97,6 +97,20 @@ body::before {
 	opacity: var(--scanline-opacity);
 	z-index: 10;
 	animation: scanline-drift var(--scanline-drift-duration) linear infinite;
+	-webkit-mask-image: radial-gradient(
+		ellipse at center,
+		rgb(0 0 0 / 0.38) 0%,
+		rgb(0 0 0 / 0.55) 36%,
+		rgb(0 0 0 / 0.9) 72%,
+		#000 100%
+	);
+	mask-image: radial-gradient(
+		ellipse at center,
+		rgb(0 0 0 / 0.38) 0%,
+		rgb(0 0 0 / 0.55) 36%,
+		rgb(0 0 0 / 0.9) 72%,
+		#000 100%
+	);
 }
 
 @keyframes scanline-drift {
