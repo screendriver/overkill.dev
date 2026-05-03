@@ -17,6 +17,16 @@
 	--focus-outline: #ffeb70;
 	--font-pixel: "Press Start 2P", "Lucida Console", monospace;
 	--font-body: "IBM Plex Sans", "Segoe UI", Tahoma, sans-serif;
+	--scanline-opacity: 0.28;
+	--scanline-drift-duration: 8s;
+	--scanline-drift-distance: 40px;
+	--frame-curve-rotation: 0.35deg;
+	--frame-vignette-mid: rgb(2 3 12 / 0.12);
+	--frame-vignette-edge: rgb(2 3 12 / 0.24);
+	--hero-glow-opacity: 0.14;
+	--hero-grid-opacity: 0.1;
+	--hero-grid-gap: 14%;
+	--hero-grid-height: 36%;
 }
 
 *,
@@ -84,9 +94,9 @@ body::before {
 	inset: 0;
 	pointer-events: none;
 	background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 2px, rgb(0 0 0 / 0.2) 3px);
-	opacity: 0.28;
+	opacity: var(--scanline-opacity);
 	z-index: 10;
-	animation: scanline-drift 8s linear infinite;
+	animation: scanline-drift var(--scanline-drift-duration) linear infinite;
 }
 
 @keyframes scanline-drift {
@@ -95,7 +105,7 @@ body::before {
 	}
 
 	to {
-		background-position: 0 40px;
+		background-position: 0 var(--scanline-drift-distance);
 	}
 }
 
@@ -113,7 +123,7 @@ body::before {
 		0 18px 30px rgb(0 0 0 / 0.45);
 	padding: clamp(1rem, 3vw, 2rem);
 	overflow: hidden;
-	transform: perspective(1400px) rotateX(0.35deg);
+	transform: perspective(1400px) rotateX(var(--frame-curve-rotation));
 	transform-origin: center top;
 }
 
@@ -123,7 +133,12 @@ body::before {
 	inset: 0;
 	pointer-events: none;
 	background:
-		radial-gradient(ellipse at center, transparent 58%, rgb(2 3 12 / 0.12) 78%, rgb(2 3 12 / 0.24) 100%),
+		radial-gradient(
+			ellipse at center,
+			transparent 58%,
+			var(--frame-vignette-mid) 78%,
+			var(--frame-vignette-edge) 100%
+		),
 		repeating-linear-gradient(
 			45deg,
 			transparent 0,
@@ -138,11 +153,17 @@ body::before {
 	margin: 0 auto;
 	text-align: center;
 	background-image:
-		radial-gradient(ellipse at 50% 120%, rgb(255 94 196 / 0.14) 0%, rgb(255 94 196 / 0) 52%),
-		linear-gradient(to top, rgb(78 243 255 / 0.1) 0%, rgb(78 243 255 / 0.1) 1px, transparent 1px, transparent 14%);
+		radial-gradient(ellipse at 50% 120%, rgb(255 94 196 / var(--hero-glow-opacity)) 0%, rgb(255 94 196 / 0) 52%),
+		linear-gradient(
+			to top,
+			rgb(78 243 255 / var(--hero-grid-opacity)) 0%,
+			rgb(78 243 255 / var(--hero-grid-opacity)) 1px,
+			transparent 1px,
+			transparent var(--hero-grid-gap)
+		);
 	background-size:
 		100% 100%,
-		100% 36%;
+		100% var(--hero-grid-height);
 	background-repeat: no-repeat;
 	background-position:
 		center,
@@ -268,19 +289,6 @@ h1 {
 	background: linear-gradient(180deg, #98fdff 0%, #52d9ff 100%);
 	border: 3px solid #b2fcff;
 	box-shadow: 4px 4px 0 #142649;
-	transition:
-		transform 120ms ease,
-		box-shadow 120ms ease;
-}
-
-.button:hover {
-	transform: translate(-2px, -2px);
-	box-shadow: 6px 6px 0 #142649;
-}
-
-.button:active {
-	transform: translate(1px, 1px);
-	box-shadow: 2px 2px 0 #142649;
 }
 
 .button:focus-visible,
