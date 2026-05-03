@@ -456,18 +456,48 @@ main {
 	}
 
 	.hero::before {
-		display: none;
+		top: 0.56rem;
+		right: 0.5rem;
+		font-size: 0.39rem;
+		text-shadow:
+			0 0 3px rgb(108 255 146 / 0.95),
+			0 0 10px rgb(108 255 146 / 0.75),
+			0 0 20px rgb(108 255 146 / 0.55);
+	}
+
+	.terminal-icon {
+		top: 0.56rem;
+		left: 0.58rem;
+		width: clamp(1.5rem, 8vw, 2rem);
 	}
 
 	.kicker {
-		line-height: 1.7;
+		padding-left: 1.9rem;
+		padding-right: 5.8rem;
+		font-size: 0.45rem;
+		text-align: center;
+		letter-spacing: 0.07em;
+		line-height: 1.45;
+		margin-bottom: 0.72rem;
+	}
+
+	h1 {
+		font-size: clamp(1.25rem, 8.2vw, 1.95rem);
+		line-height: 1.25;
+	}
+
+	.lede {
+		margin-top: 0.82rem;
+		margin-bottom: 0;
+		font-size: clamp(0.95rem, 3.7vw, 1.12rem);
 	}
 
 	.button {
 		display: block;
 		width: 100%;
 		text-align: center;
-		padding: 1rem;
+		padding: 0.88rem;
+		margin-top: 1.08rem;
 	}
 
 	.cards {
