@@ -84,8 +84,19 @@ body::before {
 	inset: 0;
 	pointer-events: none;
 	background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 2px, rgb(0 0 0 / 0.2) 3px);
-	opacity: 0.2;
+	opacity: 0.28;
 	z-index: 10;
+	animation: scanline-drift 8s linear infinite;
+}
+
+@keyframes scanline-drift {
+	from {
+		background-position: 0 0;
+	}
+
+	to {
+		background-position: 0 40px;
+	}
 }
 
 .frame {
