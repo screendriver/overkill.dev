@@ -458,6 +458,17 @@ main {
 
 .footer a {
 	color: var(--accent-cyan);
+	text-decoration: none;
+	opacity: 0.86;
+	transition:
+		opacity 140ms ease,
+		text-decoration-color 140ms ease;
+}
+
+.footer a:hover,
+.footer a:focus-visible {
+	opacity: 1;
+	text-decoration: underline;
 }
 
 .footer-note {
