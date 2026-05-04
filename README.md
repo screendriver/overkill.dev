@@ -6,5 +6,5 @@ Retro landing page arguing that testing is not overkill.
 
 ```bash
 npm install
-npx just start
+npx just develop
 ```
