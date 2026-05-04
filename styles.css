@@ -308,6 +308,26 @@ body::before {
 	}
 }
 
+@keyframes evidence-upload-neon-pulse {
+	from {
+		filter: brightness(1.08);
+		box-shadow:
+			4px 4px 0 #142649,
+			0 0 14px rgb(78 243 255 / 0.35),
+			0 0 24px rgb(78 243 255 / 0.45),
+			0 0 32px rgb(255 94 196 / 0.35);
+	}
+
+	to {
+		filter: brightness(1.16);
+		box-shadow:
+			4px 4px 0 #142649,
+			0 0 20px rgb(78 243 255 / 0.7),
+			0 0 34px rgb(78 243 255 / 0.82),
+			0 0 46px rgb(255 94 196 / 0.68);
+	}
+}
+
 .kicker {
 	font-family: var(--font-pixel);
 	font-size: clamp(0.52rem, 1.4vw, 0.7rem);
@@ -366,6 +386,11 @@ h1 {
 	box-shadow:
 		4px 4px 0 #142649,
 		0 0 14px rgb(78 243 255 / 0.35);
+}
+
+.button.is-uploading {
+	animation: evidence-upload-neon-pulse 420ms ease-in-out infinite alternate;
+	pointer-events: none;
 }
 
 .button:focus-visible,

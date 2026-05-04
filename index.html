@@ -49,7 +49,7 @@
 			<p class="kicker">SYSTEM BOOT: ENGINEERING OPINIONS.EXE</p>
 			<h1>Testing is overkill.</h1>
 			<p class="lede">Why test anything? Ship first. Think never. Hope forever.</p>
-			<a class="button" href="https://www.echooff.dev/blog" rel="noopener noreferrer">Witness the evidence</a>
+			<a class="button" id="evidence-button" href="/404">Witness the evidence</a>
 		</header>
 
 		<main>
@@ -91,11 +91,36 @@
 		</main>
 
 		<footer class="footer frame">
-			<p>
-				Read the long-form takes on testing, architecture, and tradeoffs on
-				<a href="https://www.echooff.dev/blog" rel="noopener noreferrer">echooff.dev/blog</a>.
-			</p>
+			<p>Read the long-form takes in the archival void at <a href="/404">/blog</a>.</p>
 			<p class="footer-note">Works on my machine. Production is another machine.</p>
 		</footer>
+		<script>
+			const evidenceButtonElement = document.querySelector("#evidence-button");
+
+			if (evidenceButtonElement instanceof HTMLAnchorElement) {
+				let isUploadSequenceRunning = false;
+
+				evidenceButtonElement.addEventListener("click", (clickEvent) => {
+					if (isUploadSequenceRunning) {
+						clickEvent.preventDefault();
+						return;
+					}
+
+					clickEvent.preventDefault();
+					isUploadSequenceRunning = true;
+					evidenceButtonElement.classList.add("is-uploading");
+					evidenceButtonElement.setAttribute("aria-disabled", "true");
+					evidenceButtonElement.textContent = "Uploading evidence...";
+
+					window.setTimeout(() => {
+						evidenceButtonElement.textContent = "Upload failed: tests missing";
+					}, 500);
+
+					window.setTimeout(() => {
+						window.location.href = "/404";
+					}, 1400);
+				});
+			}
+		</script>
 	</body>
 </html>
