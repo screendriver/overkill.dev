@@ -6,7 +6,7 @@ when:
 
 steps:
     - name: build
-      image: node:24.15.0
+      image: node:26.0.0
       commands:
           - npm clean-install
           - npx just build
