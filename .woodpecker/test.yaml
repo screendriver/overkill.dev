@@ -4,11 +4,11 @@ when:
 
 steps:
     - name: install
-      image: node:24.15.0
+      image: node:26.0.0
       commands:
           - npm clean-install
 
     - name: validate
-      image: node:24.15.0
+      image: node:26.0.0
       commands:
           - npx just validate
