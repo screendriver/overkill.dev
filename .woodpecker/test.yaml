@@ -11,4 +11,4 @@ steps:
     - name: validate
       image: node:26.1.0
       commands:
-          - npx just validate
+          - npx just test
