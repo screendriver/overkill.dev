@@ -17,9 +17,10 @@ compile: sync
 
 lint: check
 	prettier --check .
+	eslint .
 
 test-unit:
-	node --test "source/**/*.test.ts"
+	vitest run
 
 test: compile lint test-unit build
 

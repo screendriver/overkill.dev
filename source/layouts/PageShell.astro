@@ -4,11 +4,11 @@ import "@fontsource/press-start-2p";
 import "@fontsource/ibm-plex-sans/400.css";
 import "@fontsource/ibm-plex-sans/600.css";
 
-export interface Props {
+export type Props = {
 	readonly canonicalUrl?: string;
 	readonly description: string;
 	readonly title: string;
-}
+};
 
 const { canonicalUrl, description, title } = Astro.props;
 ---

@@ -1,36 +1,35 @@
-import assert from "node:assert/strict";
-import { describe, it } from "node:test";
+import { describe, expect, it } from "vitest";
 import { createEvidenceButtonClickListener } from "./evidence-button.ts";
 
-interface FakeEvidenceButtonElement {
+type FakeEvidenceButtonElement = {
 	readonly addedClassNames: string[];
 	readonly attributesByName: Map<string, string>;
 	readonly classList: {
-		add(className: string): void;
+		add: (className: string) => void;
 	};
-	setAttribute(attributeName: string, attributeValue: string): void;
 	textContent: string;
-}
+	setAttribute: (attributeName: string, attributeValue: string) => void;
+};
 
-interface ScheduledCallback {
+type ScheduledCallback = {
 	readonly callback: () => void;
 	readonly delayMilliseconds: number;
-}
+};
 
-interface FakeBrowserWindow {
+type FakeBrowserWindow = {
 	readonly location: {
 		href: string;
 	};
 	readonly scheduledCallbacks: ScheduledCallback[];
-	setTimeout(callback: () => void, delayMilliseconds: number): void;
-}
+	setTimeout: (callback: () => void, delayMilliseconds: number) => void;
+};
 
-interface FakeClickEvent {
+type FakeClickEvent = {
 	readonly preventedDefaultCount: number;
-	preventDefault(): void;
-}
+	preventDefault: () => void;
+};
 
-function createFakeEvidenceButtonElement() {
+function createFakeEvidenceButtonElement(): FakeEvidenceButtonElement {
 	const addedClassNames: string[] = [];
 	const attributesByName = new Map<string, string>();
 
@@ -38,11 +37,11 @@ function createFakeEvidenceButtonElement() {
 		addedClassNames,
 		attributesByName,
 		classList: {
-			add(className: string) {
+			add(className: string): void {
 				addedClassNames.push(className);
 			}
 		},
-		setAttribute(attributeName: string, attributeValue: string) {
+		setAttribute(attributeName: string, attributeValue: string): void {
 			attributesByName.set(attributeName, attributeValue);
 		},
 		textContent: "Witness the evidence"
@@ -51,14 +50,14 @@ function createFakeEvidenceButtonElement() {
 	return fakeEvidenceButtonElement;
 }
 
-function createFakeBrowserWindow() {
+function createFakeBrowserWindow(): FakeBrowserWindow {
 	const scheduledCallbacks: ScheduledCallback[] = [];
 	const location = { href: "/" };
 
 	const fakeBrowserWindow: FakeBrowserWindow = {
 		location,
 		scheduledCallbacks,
-		setTimeout(callback: () => void, delayMilliseconds: number) {
+		setTimeout(callback: () => void, delayMilliseconds: number): void {
 			scheduledCallbacks.push({ callback, delayMilliseconds });
 		}
 	};
@@ -66,14 +65,14 @@ function createFakeBrowserWindow() {
 	return fakeBrowserWindow;
 }
 
-function createFakeClickEvent() {
+function createFakeClickEvent(): FakeClickEvent {
 	let preventedDefaultCount = 0;
 
 	const fakeClickEvent: FakeClickEvent = {
-		get preventedDefaultCount() {
+		get preventedDefaultCount(): number {
 			return preventedDefaultCount;
 		},
-		preventDefault() {
+		preventDefault(): void {
 			preventedDefaultCount += 1;
 		}
 	};
@@ -91,8 +90,8 @@ function getScheduledCallback(fakeBrowserWindow: FakeBrowserWindow, callbackInde
 	return scheduledCallback;
 }
 
-describe("createEvidenceButtonClickListener", () => {
-	it("marks the evidence upload as running before scheduling failure and redirect effects", () => {
+describe(createEvidenceButtonClickListener, (): void => {
+	it("marks the evidence upload as running before scheduling failure and redirect effects", (): void => {
 		const browserWindow = createFakeBrowserWindow();
 		const evidenceButtonElement = createFakeEvidenceButtonElement();
 		const clickEvent = createFakeClickEvent();
@@ -112,17 +111,18 @@ describe("createEvidenceButtonClickListener", () => {
 
 		handleEvidenceButtonClick(clickEvent);
 
-		assert.equal(clickEvent.preventedDefaultCount, 1);
-		assert.deepEqual(evidenceButtonElement.addedClassNames, ["is-uploading"]);
-		assert.equal(evidenceButtonElement.attributesByName.get("aria-disabled"), "true");
-		assert.equal(evidenceButtonElement.textContent, "Uploading");
-		assert.deepEqual(
-			browserWindow.scheduledCallbacks.map(({ delayMilliseconds }) => delayMilliseconds),
-			[11, 22]
-		);
+		expect(clickEvent.preventedDefaultCount).toBe(1);
+		expect(evidenceButtonElement.addedClassNames).toStrictEqual(["is-uploading"]);
+		expect(evidenceButtonElement.attributesByName.get("aria-disabled")).toBe("true");
+		expect(evidenceButtonElement.textContent).toBe("Uploading");
+		expect(
+			browserWindow.scheduledCallbacks.map((scheduledCallback): number => {
+				return scheduledCallback.delayMilliseconds;
+			})
+		).toStrictEqual([11, 22]);
 	});
 
-	it("ignores duplicate clicks after the first upload sequence starts", () => {
+	it("ignores duplicate clicks after the first upload sequence starts", (): void => {
 		const browserWindow = createFakeBrowserWindow();
 		const evidenceButtonElement = createFakeEvidenceButtonElement();
 		const firstClickEvent = createFakeClickEvent();
@@ -136,13 +136,13 @@ describe("createEvidenceButtonClickListener", () => {
 		handleEvidenceButtonClick(firstClickEvent);
 		handleEvidenceButtonClick(secondClickEvent);
 
-		assert.equal(firstClickEvent.preventedDefaultCount, 1);
-		assert.equal(secondClickEvent.preventedDefaultCount, 1);
-		assert.equal(browserWindow.scheduledCallbacks.length, 2);
-		assert.deepEqual(evidenceButtonElement.addedClassNames, ["is-uploading"]);
+		expect(firstClickEvent.preventedDefaultCount).toBe(1);
+		expect(secondClickEvent.preventedDefaultCount).toBe(1);
+		expect(browserWindow.scheduledCallbacks).toHaveLength(2);
+		expect(evidenceButtonElement.addedClassNames).toStrictEqual(["is-uploading"]);
 	});
 
-	it("applies the scheduled failure text and redirect path", () => {
+	it("applies the scheduled failure text and redirect path", (): void => {
 		const browserWindow = createFakeBrowserWindow();
 		const evidenceButtonElement = createFakeEvidenceButtonElement();
 		const clickEvent = createFakeClickEvent();
@@ -156,7 +156,7 @@ describe("createEvidenceButtonClickListener", () => {
 		getScheduledCallback(browserWindow, 0).callback();
 		getScheduledCallback(browserWindow, 1).callback();
 
-		assert.equal(evidenceButtonElement.textContent, "Upload failed: tests missing");
-		assert.equal(browserWindow.location.href, "/404");
+		expect(evidenceButtonElement.textContent).toBe("Upload failed: tests missing");
+		expect(browserWindow.location.href).toBe("/404");
 	});
 });
