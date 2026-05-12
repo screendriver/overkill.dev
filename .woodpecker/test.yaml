@@ -8,7 +8,7 @@ steps:
       commands:
           - npm clean-install
 
-    - name: validate
+    - name: test
       image: node:26.1.0
       commands:
           - npx just test
