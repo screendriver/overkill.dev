@@ -1,0 +1,43 @@
+---
+import "../../node_modules/modern-normalize/modern-normalize.css";
+import "@fontsource/press-start-2p";
+import "@fontsource/ibm-plex-sans/400.css";
+import "@fontsource/ibm-plex-sans/600.css";
+
+export interface Props {
+	readonly canonicalUrl?: string;
+	readonly description: string;
+	readonly title: string;
+}
+
+const { canonicalUrl, description, title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<meta name="author" content="Christian Rackerseder" />
+		<title>{title}</title>
+		<link rel="icon" href="/favicon.ico" sizes="any" />
+		<link rel="icon" href="/favicon.png" type="image/png" />
+		{canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+		<link rel="me" href="https://www.echooff.dev" />
+		{
+			import.meta.env.PROD && (
+				<script is:inline defer={true} src="https://pulse.82r.de/api/script.js" data-site-id="f832c07656ba" />
+			)
+		}
+		<slot name="search-engine-optimization-schema" />
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	@import "../styles/main.css";
+</style>
