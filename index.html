@@ -8,6 +8,7 @@
 		<title>Testing and TDD Are Not Overkill</title>
 		<link rel="icon" href="/favicon.ico" sizes="any" />
 		<link rel="icon" href="/favicon.png" type="image/png" />
+		<link rel="canonical" href="https://overkill.dev" />
 		<link rel="me" href="https://www.echooff.dev" />
 		<link rel="stylesheet" href="/styles.css" />
 		<script type="application/ld+json">
@@ -58,7 +59,7 @@
 			<p class="kicker">SYSTEM BOOT: ENGINEERING OPINIONS.EXE</p>
 			<h1>Testing is overkill.</h1>
 			<p class="lede">Why test anything? Ship first. Think never. Hope forever.</p>
-			<a class="button" id="evidence-button" href="/404">Witness the evidence</a>
+			<button class="button" id="evidence-button" type="button">Witness the evidence</button>
 		</header>
 
 		<main>
@@ -101,13 +102,13 @@
 		</main>
 
 		<footer class="footer frame">
-			<p><a href="/404">Need proof? Click here.</a></p>
+			<p>Need proof? Click the evidence button.</p>
 			<p class="footer-note">Works on my machine. Production is another machine.</p>
 		</footer>
 		<script>
 			const evidenceButtonElement = document.querySelector("#evidence-button");
 
-			if (evidenceButtonElement instanceof HTMLAnchorElement) {
+			if (evidenceButtonElement instanceof HTMLButtonElement) {
 				let isUploadSequenceRunning = false;
 
 				evidenceButtonElement.addEventListener("click", (clickEvent) => {

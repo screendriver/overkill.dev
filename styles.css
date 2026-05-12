@@ -364,6 +364,7 @@ h1 {
 }
 
 .button {
+	appearance: none;
 	display: inline-block;
 	margin-top: 1.5rem;
 	padding: 0.85rem 1.2rem;
@@ -372,6 +373,7 @@ h1 {
 	text-transform: uppercase;
 	text-decoration: none;
 	color: #12061f;
+	cursor: pointer;
 	background: linear-gradient(180deg, #98fdff 0%, #52d9ff 100%);
 	border: 3px solid #b2fcff;
 	box-shadow: 4px 4px 0 #142649;
