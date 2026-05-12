@@ -6,12 +6,25 @@ default:
 format:
 	prettier --log-level warn --write .
 
-validate:
+check: sync
+	astro check --minimumFailingSeverity=hint
+
+sync:
+	astro sync --force
+
+compile: sync
+	tsc
+
+lint: check
 	prettier --check .
-	just build
+
+test-unit:
+	node --test "source/**/*.test.ts"
+
+test: compile lint test-unit build
 
 develop:
-	vite
+	astro dev
 
 build:
-	vite build
+	astro build
