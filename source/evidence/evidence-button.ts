@@ -1,40 +1,40 @@
-export interface EvidenceUploadSequence {
+export type EvidenceUploadSequence = {
 	readonly failedText: string;
 	readonly failedTextDelayMilliseconds: number;
 	readonly redirectDelayMilliseconds: number;
 	readonly redirectPath: string;
 	readonly uploadingText: string;
-}
+};
 
-interface EvidenceButtonElement {
+type EvidenceButtonElement = {
 	readonly classList: {
-		add(className: string): void;
+		add: (className: string) => void;
 	};
-	setAttribute(attributeName: string, attributeValue: string): void;
 	textContent: string | null;
-}
+	setAttribute: (attributeName: string, attributeValue: string) => void;
+};
 
-interface EvidenceButtonTimerWindow {
+type EvidenceButtonTimerWindow = {
 	readonly location: {
 		href: string;
 	};
-	setTimeout(callback: () => void, delayMilliseconds: number): unknown;
-}
+	setTimeout: (callback: () => void, delayMilliseconds: number) => unknown;
+};
 
-interface EvidenceButtonClickListenerOptions {
+type EvidenceButtonClickListenerOptions = {
 	readonly browserWindow: EvidenceButtonTimerWindow;
 	readonly evidenceButtonElement: EvidenceButtonElement;
 	readonly uploadSequence?: EvidenceUploadSequence;
-}
+};
 
-interface EvidenceButtonRegistrationWindow extends EvidenceButtonTimerWindow {
+type EvidenceButtonRegistrationWindow = EvidenceButtonTimerWindow & {
 	readonly HTMLButtonElement: typeof HTMLButtonElement;
-}
+};
 
-interface EvidenceButtonRegistrationOptions {
+type EvidenceButtonRegistrationOptions = {
 	readonly browserDocument: Pick<Document, "querySelector">;
 	readonly browserWindow: EvidenceButtonRegistrationWindow;
-}
+};
 
 export const evidenceUploadSequence: EvidenceUploadSequence = Object.freeze({
 	failedText: "Upload failed: tests missing",
@@ -46,7 +46,7 @@ export const evidenceUploadSequence: EvidenceUploadSequence = Object.freeze({
 
 export function createEvidenceButtonClickListener(
 	evidenceButtonClickListenerOptions: EvidenceButtonClickListenerOptions
-) {
+): (clickEvent: Pick<Event, "preventDefault">) => void {
 	const {
 		browserWindow,
 		evidenceButtonElement,
@@ -55,7 +55,7 @@ export function createEvidenceButtonClickListener(
 
 	let isUploadSequenceRunning = false;
 
-	return function handleEvidenceButtonClick(clickEvent: Pick<Event, "preventDefault">) {
+	return function handleEvidenceButtonClick(clickEvent: Pick<Event, "preventDefault">): void {
 		clickEvent.preventDefault();
 
 		if (isUploadSequenceRunning) {
@@ -67,17 +67,17 @@ export function createEvidenceButtonClickListener(
 		evidenceButtonElement.setAttribute("aria-disabled", "true");
 		evidenceButtonElement.textContent = uploadSequence.uploadingText;
 
-		browserWindow.setTimeout(() => {
+		browserWindow.setTimeout((): void => {
 			evidenceButtonElement.textContent = uploadSequence.failedText;
 		}, uploadSequence.failedTextDelayMilliseconds);
 
-		browserWindow.setTimeout(() => {
+		browserWindow.setTimeout((): void => {
 			browserWindow.location.href = uploadSequence.redirectPath;
 		}, uploadSequence.redirectDelayMilliseconds);
 	};
 }
 
-export function registerEvidenceButton(evidenceButtonRegistrationOptions: EvidenceButtonRegistrationOptions) {
+export function registerEvidenceButton(evidenceButtonRegistrationOptions: EvidenceButtonRegistrationOptions): void {
 	const { browserDocument, browserWindow } = evidenceButtonRegistrationOptions;
 	const evidenceButtonElement = browserDocument.querySelector("#evidence-button");
 
