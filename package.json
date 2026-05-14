@@ -22,7 +22,7 @@
 		"@fontsource/ibm-plex-sans": "5.2.8",
 		"@fontsource/press-start-2p": "5.2.7",
 		"@types/node": "25.7.0",
-		"astro": "6.3.2",
+		"astro": "6.3.3",
 		"eslint": "10.3.0",
 		"globals": "17.6.0",
 		"prettier": "3.8.3",
