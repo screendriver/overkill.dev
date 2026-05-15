@@ -12,3 +12,4 @@ steps:
       image: node:26.1.0
       commands:
           - npx just test
+          - npx just lint

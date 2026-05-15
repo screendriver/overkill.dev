@@ -1,3 +1,8 @@
+@import "modern-normalize/modern-normalize.css";
+@import "@fontsource/press-start-2p";
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/600.css";
+
 :root {
 	--background-night: #050510;
 	--background-panel: #0f1233;
@@ -28,6 +33,19 @@
 *::before,
 *::after {
 	box-sizing: border-box;
+}
+
+html {
+	line-height: 1.15;
+	-webkit-text-size-adjust: 100%;
+}
+
+ul {
+	padding: 0;
+}
+
+figure {
+	margin: 0;
 }
 
 html,

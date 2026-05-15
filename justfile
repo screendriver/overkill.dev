@@ -1,34 +1,22 @@
 export PATH := "./node_modules/.bin:" + env_var("PATH")
-export NODE_OPTIONS := "--max-old-space-size=4096"
 
 default:
 	@just --list
 
-sync:
-	astro sync --force
+develop:
+	vite dev
 
-lint: sync
-	astro check --minimumFailingSeverity=hint
+preview: build
+	vite preview
+
+build:
+	vite build
+
+lint:
 	prettier --check .
-	eslint . --cache --cache-location "./target/eslintcache" --cache-strategy content --max-warnings 0
 
 lint-fix:
-	prettier --log-level warn --write .
-	eslint --fix .
+	prettier --write .
 
-@compile: sync
-	tsc
-
-@develop $FORCE_COLOR="1":
-	astro dev
-
-@build:
-	astro build
-
-@preview:
-	astro preview
-
-@test-unit *options: sync
-	vitest {{options}}
-
-test: sync compile (test-unit "--run") lint
+test:
+	node --test tests/*.test.js
