@@ -13,22 +13,10 @@
 		"modern-normalize": "3.0.1"
 	},
 	"devDependencies": {
-		"@astrojs/check": "0.9.9",
-		"@enormora/eslint-config-base": "0.0.31",
-		"@enormora/eslint-config-browser": "0.0.18",
-		"@enormora/eslint-config-node": "0.0.26",
-		"@enormora/eslint-config-typescript": "0.0.36",
-		"@enormora/eslint-config-vitest": "0.0.15",
 		"@fontsource/ibm-plex-sans": "5.2.8",
 		"@fontsource/press-start-2p": "5.2.7",
-		"@types/node": "25.8.0",
-		"astro": "6.3.3",
-		"eslint": "10.3.0",
-		"globals": "17.6.0",
 		"prettier": "3.8.3",
-		"prettier-plugin-astro": "0.14.1",
 		"rust-just": "1.51.0",
-		"typescript": "6.0.3",
-		"vitest": "4.1.6"
+		"vite": "8.0.11"
 	}
 }

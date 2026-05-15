@@ -13,16 +13,6 @@
 			"enabled": false
 		},
 		{
-			"groupName": "Astro dependencies",
-			"groupSlug": "astro-dependencies",
-			"matchPackageNames": ["@astrojs/*", "astro", "astro-*", "*-astro"]
-		},
-		{
-			"groupName": "Fontsource dependencies",
-			"groupSlug": "fontsource-dependencies",
-			"matchPackageNames": ["@fontsource/*"]
-		},
-		{
 			"matchFileNames": [".woodpecker/*.yaml"],
 			"matchUpdateTypes": ["minor", "patch"],
 			"automerge": true,
@@ -33,6 +23,11 @@
 			"matchUpdateTypes": ["minor", "patch"],
 			"automerge": true,
 			"automergeType": "branch"
+		},
+		{
+			"groupName": "Fontsource dependencies",
+			"groupSlug": "fontsource-dependencies",
+			"matchPackageNames": ["@fontsource/*"]
 		},
 		{
 			"groupName": "Node.js",
