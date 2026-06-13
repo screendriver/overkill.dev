@@ -462,6 +462,10 @@ main {
 	color: var(--text-secondary);
 }
 
+.site-footer {
+	text-align: center;
+}
+
 .footer {
 	max-width: 72rem;
 	margin: 1.6rem auto 0;
@@ -492,6 +496,32 @@ main {
 	font-size: clamp(0.5rem, 1vw, 0.6rem);
 	letter-spacing: 0.04em;
 	color: var(--accent-green);
+}
+
+.footer-meta {
+	margin: 0.5rem 0 0;
+	font-size: 0.9rem;
+	color: var(--text-secondary);
+}
+
+.footer-meta a {
+	color: inherit;
+	line-height: 1;
+	text-decoration: none;
+	opacity: 0.7;
+	transition: opacity 140ms ease;
+}
+
+.footer-meta a:hover {
+	opacity: 1;
+	text-decoration: none;
+}
+
+.footer-meta a:focus-visible {
+	opacity: 1;
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.18em;
 }
 
 .not-found-layout {
