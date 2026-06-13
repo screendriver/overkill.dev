@@ -462,10 +462,6 @@ main {
 	color: var(--text-secondary);
 }
 
-.site-footer {
-	text-align: center;
-}
-
 .footer {
 	max-width: 72rem;
 	margin: 1.6rem auto 0;
@@ -501,6 +497,7 @@ main {
 .footer-meta {
 	margin: 0.5rem 0 0;
 	font-size: 0.9rem;
+	text-align: center;
 	color: var(--text-secondary);
 }
 
