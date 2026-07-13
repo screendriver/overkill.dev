@@ -1,5 +1,5 @@
 const productionHostname = "overkill.dev";
-const pulseScriptSource = "https://pulse.82r.de/api/script.js";
+const pulseScriptSource = "/_runtime/script.js";
 const pulseSiteIdentifier = "f832c07656ba";
 
 if (window.location.hostname === productionHostname) {
