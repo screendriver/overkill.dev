@@ -7,12 +7,12 @@ labels:
 
 steps:
     - name: install
-      image: node:26.3.0
+      image: node:26.5.0
       commands:
           - npm clean-install
 
     - name: test
-      image: node:26.3.0
+      image: node:26.5.0
       commands:
           - npx just test
           - npx just lint
