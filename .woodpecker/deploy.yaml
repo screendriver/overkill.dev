@@ -9,7 +9,7 @@ labels:
 
 steps:
     - name: build
-      image: node:26.12.1
+      image: node:26.13.0
       commands:
           - npm clean-install
           - npx just build
